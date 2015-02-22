@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "description": "a simple wrapper of recotw for browser and commonjs",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register"
+    "test": "mocha --compilers coffee:coffee-script/register"
   },
   "author": "hinaloe",
   "license": "MIT",
