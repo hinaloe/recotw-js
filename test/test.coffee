@@ -24,7 +24,7 @@ describe 'RecoTw', ->
           try
             ok JSON.parse(err.error.text).errors[0].message is 'Already recorded'
           catch e
-            console.error "Error: #{e} Res:#{err.error}"
+            console.error "Error: #{e} Res:#{err.error.text}"
 
           done()
 
