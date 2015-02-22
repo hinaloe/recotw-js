@@ -1,0 +1,109 @@
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: RecoTw API
+links:
+- href: http://recotw.black
+  rel: self
+#definitions:
+properties:
+  tweet:
+    title: ツイート
+    description: 記録されたツイートを表します。
+    properties:
+      id:
+        description: RecoTw独自のツイートのIDです。TwitterのツイートIDとは異なります。
+        type: string
+        example: 2148
+        pattern: "¥d+"
+      tweet_id:
+        description: ツイートの ID です。同一 ID のツイート（同じツイート）は複数登録できません。
+        type: string
+        example: 543780142397390850
+      content:
+        description: ツイート内容です。
+        type: string
+        example: 液体ココアちゃん飲んでるなう
+      target_id:
+        description: ツイートを呟いたユーザーのユーザーIDです。
+        type: string
+        example: 2221361616
+      target_sn:
+        description: ツイートを呟いたユーザーのユーザー名(screen_name)です
+        type:  string
+        example: java_shit
+      record_date:
+        description: 登録日時の情報です。タイムゾーンはJST(UTC+0900)です。
+        type: string
+        example: "2014-12-13 23:53:54"
+      result?:
+        description: ツイートの追加に成功したか否かを表します。
+        type: boolean
+        example: true
+    links:
+    - description: 登録された全てのツイート情報が返ってきます。
+      title: get_tweet_all
+      method: GET
+      href: "/1/tweet/get_tweet_all"
+      rel: instances
+      schema:
+        properties:
+          since_id:
+            "$ref": "#/properties/tweet/properties/id"
+          callback:
+            description: このパラメータに値を載せると jsonp 形式でレスポンスが返ってきます。
+            type: string
+            example: callback
+    - description: 指定ユーザーのツイートを返します。
+      title: user_tweet
+      method: GET
+      href: "/1/tweet/user_tweet"
+      rel: instances
+      schema:
+        properties:
+          callback:
+            description: このパラメータに値を載せると jsonp 形式でレスポンスが返ってきます。
+            type: string
+            example: callback
+          id:
+            description: ユーザー ID を指定してツイートを取得します。
+            type: string
+          sn:
+            description: ユーザー名(screen_name) を指定してツイートを取得します。このパラメータか id パラメータのどちらかが必須です。両方指定した場合は sn パラメータが優先されます。
+            type: string
+    - description: 登録されたツイート数を返します。
+      title: count_tweet
+      method: GET
+      href: "/1/tweet/count_tweet"
+      rel: show
+      schema:
+        properties:
+          callback:
+            description: このパラメータに値を載せると jsonp 形式でレスポンスが返ってきます。
+            type: string
+            example: callback
+    - description: ツイートの登録ができます。レスポンスは登録した情報が返ってきます。既に登録済みのツイートは登録できません登録されたツイート数を返します。
+      title: record_tweet
+      method: POST
+      href: "/1/tweet/record_tweet"
+      rel: create
+      schema:
+        properties:
+          id:
+            description: 登録するツイートのIDを指定します。
+            type: string
+            example: 1145141919
+            pattern: ¥d+
+          via:
+            description: 登録者名を指定します。
+            type: string
+        required:
+        - id
+  count:
+    descripion: ツイート数
+    properties:
+     count:
+      type: int
+      description: 登録されたツイート数
+
+
+
+
