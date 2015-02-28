@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "description": "a simple wrapper of recotw for browser and commonjs",
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script/register"
+    "test": "mocha --compilers coffee:coffee-script/register --timeout=5000"
   },
   "author": "hinaloe",
   "license": "MIT",
@@ -12,11 +12,11 @@
     "superagent": "^0.21.0"
   },
   "devDependencies": {
-    "bluebird": "^2.9.9",
+    "bluebird": "^2.9.13",
     "browserify": "^9.0.3",
-    "coffee-script": "^1.8.0",
+    "coffee-script": "^1.9.1",
     "coffeeify": "^1.0.0",
-    "mocha": "^2.0.1",
+    "mocha": "^2.1.0",
     "promise": "^6.1.0",
     "schema-tsifier": "^1.1.6",
     "typescript": "^1.4.1"
