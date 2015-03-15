@@ -1,6 +1,6 @@
 {
   "name": "recotw-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "description": "a simple wrapper of recotw for browser and commonjs",
   "scripts": {
