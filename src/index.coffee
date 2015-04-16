@@ -4,7 +4,7 @@ RecoTw = require '../kitchen/recotw'
 RecoTw.setEndpoint = (endpoint) -> RecoTw._endpoint = endpoint
 RecoTw.setRequester (method, api, params) ->
   if !Promise?
-    return new Promise.reject 'You should require promise or its shim'
+    return new Promise.reject new Error 'You should require promise or its shim'
 
   new Promise (done, reject) ->
     url = RecoTw._endpoint+api
@@ -19,10 +19,12 @@ RecoTw.setRequester (method, api, params) ->
         .send params
     req
     .set 'Accept', 'application/json'
+    #.on 'error',(e)-> return reject throw new Error "recotw-js request error: #{e.getMessage()} #{method} #{url} #{JSON.stringify(params)} "+'\n'+res.body.error
     .end (error, res) ->
       if error then return reject(error)
       if parseInt(res.statusCode, 10) >= 400
-        return reject error: res.error, status:res.statusCode
+        error = new Error "recotw-js request error: #{method} #{url} #{JSON.stringify(params)} "+'\n'+res.body.error
+        return reject error;
       done(res.body)
 
 module.exports = RecoTw

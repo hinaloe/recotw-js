@@ -1365,7 +1365,7 @@ RecoTw.setEndpoint = function(endpoint) {
 
 RecoTw.setRequester(function(method, api, params) {
   if (typeof Promise === "undefined" || Promise === null) {
-    return new Promise.reject('You should require promise or its shim');
+    return new Promise.reject(new Error('You should require promise or its shim'));
   }
   return new Promise(function(done, reject) {
     var req, url;
@@ -1376,10 +1376,8 @@ RecoTw.setRequester(function(method, api, params) {
         return reject(error);
       }
       if (parseInt(res.statusCode, 10) >= 400) {
-        return reject({
-          error: res.error,
-          status: res.statusCode
-        });
+        error = new Error(("recotw-js request error: " + method + " " + url + " " + (JSON.stringify(params)) + " ") + '\n' + res.body.error);
+        return reject(error);
       }
       return done(res.body);
     });
