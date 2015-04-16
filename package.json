@@ -9,17 +9,17 @@
   "author": "hinaloe",
   "license": "MIT",
   "dependencies": {
-    "superagent": "^1.1.0"
+    "superagent": "^1.2.0"
   },
   "devDependencies": {
-    "bluebird": "^2.9.14",
-    "browserify": "^9.0.3",
-    "coffee-script": "^1.9.1",
+    "bluebird": "^2.9.24",
+    "browserify": "^9.0.8",
+    "coffee-script": "^1.9.2",
     "coffeeify": "^1.0.0",
-    "mocha": "^2.2.1",
-    "promise": "^6.1.0",
+    "mocha": "^2.2.4",
+    "promise": "^7.0.0",
     "schema-tsifier": "^1.1.6",
-    "typescript": "^1.4.1"
+    "typescript": "^1.5.0-alpha"
   },
   "repository": {
     "type": "git",
