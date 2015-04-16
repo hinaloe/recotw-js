@@ -33,4 +33,4 @@ var RecoTw;
         Resources.Count = Count;
     })(Resources = RecoTw.Resources || (RecoTw.Resources = {}));
 })(RecoTw || (RecoTw = {}));
-module.exports =RecoTw;
+module.exports = RecoTw;

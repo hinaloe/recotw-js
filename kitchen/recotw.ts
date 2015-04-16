@@ -77,4 +77,5 @@ module RecoTw {
 
   }
 
-}
+  }
+export = RecoTw; 
